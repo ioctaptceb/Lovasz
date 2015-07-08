@@ -14,11 +14,7 @@ class CombineFriendsPostcards
   def initialize attributes
     @friends = attributes[:friends].to_i
     @postcards = attributes[:postcards].to_i
-    puts "###################################"
-    puts "with repetition: #{with_repetition}"
-    puts "without repetition: #{without_repetition}"
-    puts "when we have two cards: #{two_cards}"
-    puts "###################################"
+    output
   end
 
   def with_repetition
@@ -43,6 +39,13 @@ class CombineFriendsPostcards
     val1**val2
   end
 
+  def output
+    puts "###################################"
+    puts "with repetition: #{with_repetition}"
+    puts "without repetition: #{without_repetition}"
+    puts "when we have two cards: #{two_cards}"
+    puts "###################################"
+  end
 end
 
 CombineFriendsPostcards.new({friends: ARGV[0], postcards: ARGV[1]})
