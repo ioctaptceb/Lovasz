@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Problem:
 # in a shop there are k kinds of postcards.
 # we want to send postcards to n friends.
@@ -8,36 +10,39 @@
 # what happens if we want to send two different cards to each of them (but different persons may get the same card?)
 
 class CombineFriendsPostcards
-  
+
   def initialize attributes
-    @friends = attributes[:friends]
-    @postcards = attributes[:postcards]
+    @friends = attributes[:friends].to_i
+    @postcards = attributes[:postcards].to_i
+    puts "###################################"
+    puts "with repetition: #{with_repetition}"
+    puts "without repetition: #{without_repetition}"
+    puts "when we have two cards: #{two_cards}"
+    puts "###################################"
   end
 
   def with_repetition
-    @friends.comb @postcards
+    comb(@friends, @postcards)
   end
 
   def without_repetition
-    array = [@friends, @postcards]
-    max = array.max
-    min = array.min
-    max.fact / ((max - min).fact)*(min.fact)
+    min, max = [@friends, @postcards].minmax
+    fact(max) / (fact(max - min))
   end
 
   def two_cards
     @postcards = 2
-    self.with_repetition
+    with_repetition
   end
 
-  private
-  def self.fact
-    (1..self).reduce(:*) || 1
+  def fact int
+    (1..int).reduce(:*) || 1
   end
 
-  def self.comb exp 
-    self**exp
+  def comb val1, val2
+    val1**val2
   end
+
 end
 
-
+CombineFriendsPostcards.new({friends: ARGV[0], postcards: ARGV[1]})
