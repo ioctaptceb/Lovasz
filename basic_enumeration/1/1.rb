@@ -28,11 +28,11 @@ class CombineFriendsPostcards
   end
 
   private
-  def fact
+  def self.fact
     (1..self).reduce(:*) || 1
   end
 
-  def comb exp 
+  def self.comb exp 
     self**exp
   end
 end
