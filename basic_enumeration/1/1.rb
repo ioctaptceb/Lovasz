@@ -8,18 +8,21 @@
 # what happens if we want to send two different cards to each of them (but different persons may get the same card?)
 
 class CombineFriendsPostcards
-  attr_reader @friends, @postcards
+  
+  def initialize attributes
+    @friends = attributes[:friends]
+    @postcards = attributes[:postcards]
+  end
 
   def with_repetition
     @friends.comb @postcards
   end
 
   def without_repetition
-    if @friends >= @postcards
-      @friends.fact / (@friends - @postcards).fact*(@postcards.fact)
-    else
-      @postcards.fact / (@postcards - @friends).fact*(@friends.fact)
-    end
+    array = [@friends, @postcards]
+    max = array.max
+    min = array.min
+    max.fact / ((max - min).fact)*(min.fact)
   end
 
   def two_cards
