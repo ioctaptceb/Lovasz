@@ -1,2 +1,2 @@
 # laszlo
-Excersizes from Laszlo Lovasz's Combinatorial Problems
+Laszlo Lovasz's Combinatorial Problems and Exercises, as an exercise.
