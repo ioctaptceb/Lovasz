@@ -9,7 +9,7 @@
 # Modification 2:
 # what happens if we want to send two different cards to each of them (but different persons may get the same card?)
 
-class CombineFriendsPostcards
+class FriendsAndPostcards
 
   def initialize attributes
     @friends = attributes[:friends].to_i
@@ -48,4 +48,4 @@ class CombineFriendsPostcards
   end
 end
 
-CombineFriendsPostcards.new({friends: ARGV[0], postcards: ARGV[1]})
+FriendsAndPostcards.new({friends: ARGV[0], postcards: ARGV[1]})
